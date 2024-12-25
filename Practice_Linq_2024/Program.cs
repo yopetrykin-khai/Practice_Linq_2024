@@ -182,13 +182,15 @@ namespace Practice_Linq_2024
             //Query 8: Перетворити всі матчі Євро-2012 (UEFA Euro), які відбулися в Україні, на матчі з наступними властивостями:
             // MatchYear - рік матчу, Team1 - назва приймаючої команди, Team2 - назва гостьової команди, Goals - сума всіх голів за матч
 
-            var selectedGames = games;   // Корегуємо запит !!!
+            var selectedGames = games.Where(t => t.Tournament == "UEFA Euro" && t.Country == "Ukraine").Select(g => new { MatchYear = g.Date.Year, Team1 = g.Home_team, Team2 = g.Away_team, Goals = g.Home_score + g.Away_score, });   // Корегуємо запит !!!
 
             // Перевірка
             Console.WriteLine("\n======================== QUERY 8 ========================");
-
+            foreach (var game in selectedGames)
+            {
+                Console.WriteLine($"{game.MatchYear} {game.Team1} - {game.Team2}, Goals: {game.Goals}");
+            }
             // див. приклад як має бути виведено:
-
 
         }
 

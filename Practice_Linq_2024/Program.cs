@@ -165,12 +165,12 @@ namespace Practice_Linq_2024
         {
             //Query 7: Вивести перший матч у 2023 році, в якому збірна України виграла.
 
-            FootballGame g = null;   // Корегуємо запит !!!
+            FootballGame g = games.First(t => t.Date.Year == 2023 && ((t.Away_team == "Ukraine" && t.Away_score > t.Home_score) || (t.Home_team == "Ukraine" && t.Home_score > t.Away_score))); ;   // Корегуємо запит !!!
 
 
             // Перевірка
             Console.WriteLine("\n======================== QUERY 7 ========================");
-
+            Console.WriteLine($"{g.Date.ToShortDateString()} {g.Home_team} - {g.Away_team}, Score: {g.Home_score} - {g.Away_score}, Country: {g.Country}");
             // див. приклад як має бути виведено:
 
 
